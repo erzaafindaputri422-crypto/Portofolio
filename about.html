@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Erza Afinda Putri</title>
+  <meta name="description" content="Tentang Erza Afinda Putri" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --c1:#2f1b0f;
+      --c2:#5b361b;
+      --c3:#8b5b2d;
+      --c4:#c68a2f;
+      --c5:#e5b04a;
+      --text:#3f2514;
+      --muted:#7c5a43;
+      --line:#ead9c0;
+      --shadow:0 16px 40px rgba(80,44,22,.14);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html,body{
+      width:100%;
+      height:100%;
+      font-family:"Poppins",sans-serif;
+      color:var(--text);
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(229,176,74,.20), transparent 35%),
+        linear-gradient(135deg,#fffefb 0%, #fff8ed 45%, #fffdf6 100%);
+    }
+
+    .container{
+      width:min(1320px,96%);
+      height:min(94vh,900px);
+      margin:3vh auto;
+      border-radius:26px;
+      border:1px solid #ecdcc5;
+      background:linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,250,241,.9));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-rows:auto 1fr;
+      position:relative;
+    }
+
+    .navbar{
+      min-height:78px;
+      border-bottom:1px solid #ecdcc5;
+      background:linear-gradient(90deg, rgba(255,248,233,.96), rgba(255,255,255,.94));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 18px;
+      z-index:3;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:var(--c2);
+      font-weight:800;
+      padding:10px 16px;
+      border-radius:14px;
+      transition:.22s ease;
+      font-size:1rem;
+      background:transparent;
+    }
+
+    .menu a:hover{background:#fff;color:var(--c3)}
+
+    .menu a.active{
+      background:linear-gradient(145deg,#fffefb,#fff7ea);
+      color:var(--c4);
+      box-shadow: inset 0 -2px 0 rgba(198,138,47,.8);
+    }
+
+    .pattern{
+      position:absolute;
+      right:0;top:0;bottom:0;
+      width:48%;
+      opacity:.14;
+      pointer-events:none;
+      background:
+        linear-gradient(135deg, rgba(91,54,27,.22) 12%, transparent 12.5%, transparent 87%, rgba(91,54,27,.22) 87.5%, rgba(91,54,27,.22)),
+        linear-gradient(45deg, rgba(91,54,27,.22) 12%, transparent 12.5%, transparent 87%, rgba(91,54,27,.22) 87.5%, rgba(91,54,27,.22));
+      background-size:140px 200px;
+    }
+
+    .main{
+      padding:18px 24px 20px;
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-rows:auto 1fr;
+      min-height:0;
+    }
+
+    .heading{
+      margin-bottom:12px;
+      text-align:center;
+    }
+
+    .heading h1{
+      font-size:clamp(1.28rem,2.2vw,1.8rem);
+      line-height:1.15;
+      color:var(--c2);
+      font-weight:800;
+      letter-spacing:.2px;
+      margin-bottom:4px;
+    }
+
+    .heading h2{
+      font-size:clamp(.86rem,1.2vw,1rem);
+      color:var(--c3);
+      font-weight:600;
+    }
+
+    .about-card{
+      border:1px solid #ecdcc5;
+      border-radius:20px;
+      background:linear-gradient(145deg,#fffefb,#fff8ee);
+      box-shadow:0 8px 20px rgba(80,44,22,.10);
+      padding:14px;
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:16px;
+      align-items:stretch;
+      min-height:0;
+      overflow:hidden;
+    }
+
+    .photo-wrap{
+      border-radius:16px;
+      overflow:hidden;
+      height:100%;
+      min-height:280px;
+      max-height:420px;
+      max-width:220px;
+      width:100%;
+      background:linear-gradient(145deg, #7a4a24, #5b361b 55%, #3e2412);
+      padding:7px;
+      position:relative;
+      margin:0 auto;
+      box-shadow:0 12px 22px rgba(90,52,26,.16);
+    }
+
+    .photo-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:16px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+      pointer-events:none;
+    }
+
+    /* FOTO TETAP (background-image agar tidak muncul teks alt) */
+    .photo-inner{
+      width:100%;
+      height:100%;
+      border-radius:12px;
+      overflow:hidden;
+      background:#f8f8f8 url("Gambar/About.jpeg") center top / cover no-repeat;
+    }
+
+    .about-text{
+      padding:2px 2px 2px 0;
+      min-height:0;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    /* FONT DIBESARKAN SEDIKIT */
+    .about-text p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:1.02rem;
+      margin-bottom:12px;
+      text-align:justify;
+      text-justify:inter-word;
+    }
+
+    .about-text p:last-child{margin-bottom:0}
+
+    @media (max-width:1100px){
+      .container{height:min(94vh,860px);}
+      .main{padding:16px 16px 18px;}
+      .about-card{grid-template-columns:190px 1fr;gap:12px;padding:12px;}
+      .photo-wrap{max-width:190px;min-height:250px;}
+      .about-text p{font-size:.96rem;line-height:1.6;margin-bottom:10px;}
+    }
+
+    @media (max-width:760px){
+      html,body{overflow:auto;}
+      .container{height:auto;min-height:92vh;margin:2vh auto;}
+      .main{padding:14px 12px 14px;}
+      .menu a{font-size:.92rem;padding:8px 12px;}
+      .about-card{grid-template-columns:1fr;gap:10px;}
+      .photo-wrap{min-height:220px;max-height:300px;max-width:180px;}
+      .about-text p{font-size:.92rem;line-height:1.6;}
+      .pattern{width:100%}
+      .heading h1{font-size:1.2rem;}
+      .heading h2{font-size:.85rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pattern" aria-hidden="true"></div>
+
+    <header class="navbar">
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a class="active" href="about.html">About Me</a>
+        <a href="education.html">Education</a>
+        <a href="pengalaman.html">Experience</a>
+        <a href="tools-skill.html">Tools & Skill</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="heading">
+        <h1>About Me</h1>
+        <h2>Bachelor of Computer Engineering</h2>
+      </section>
+
+      <section class="about-card">
+        <div class="photo-wrap">
+          <div class="photo-inner"></div>
+        </div>
+
+        <article class="about-text">
+          <p>
+            Saya merupakan lulusan S1 Sistem Komputer dari ITB STIKOM Bali dengan IPK 3,61. Saya memiliki minat dan kemampuan dalam bidang administrasi, pengelolaan data, serta teknologi informasi. Sebelum menempuh pendidikan di perguruan tinggi, saya telah memperoleh pengalaman magang di SPKT Polsek Tanjung Kemuning pada bagian administrasi, di mana saya bertanggung jawab dalam pembuatan surat kehilangan, penyusunan laporan, serta dokumentasi kegiatan sebagai fotografer.
+          </p>
+
+          <p>
+            Selama masa perkuliahan, saya juga memiliki pengalaman magang di Kantor DPRD Kabupaten Badung pada bagian administrasi dan umum. Dalam peran tersebut, saya melakukan penginputan surat masuk dan keluar, serta pencatatan dan pengarsipan dokumen secara sistematis.
+          </p>
+
+          <p>
+            Saya dikenal sebagai pribadi yang teliti, bertanggung jawab, serta mampu bekerja secara individu maupun dalam tim. Dengan latar belakang pendidikan dan pengalaman yang saya miliki, saya siap untuk terus belajar, berkembang, dan memberikan kontribusi terbaik di dunia kerja.
+          </p>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
