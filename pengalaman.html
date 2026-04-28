@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pengalaman | Erza Afinda Putri</title>
+  <title>Experience | Erza Afinda Putri</title>
   <meta name="description" content="Pengalaman magang Erza Afinda Putri" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -37,9 +37,11 @@
         linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 45%, #fffdf6 100%);
     }
 
+    body{overflow-y:auto}
+
     .container{
       width:min(1320px,96%);
-      min-height:92vh;
+      min-height:94vh;
       margin:3vh auto;
       border-radius:26px;
       border:1px solid #ecdcc5;
@@ -104,29 +106,54 @@
     .main{
       position:relative;
       z-index:2;
-      padding:28px 30px 32px;
+      padding:24px 24px 28px;
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:14px;
+      min-height:0;
     }
 
     .heading{
       text-align:center;
-      margin-bottom:18px;
     }
 
     .heading h1{
-      font-size:clamp(1.55rem,2.5vw,2.15rem);
+      font-size:clamp(1.55rem,2.8vw,2.2rem);
       line-height:1.15;
       color:var(--c2);
       font-weight:800;
-      margin-bottom:6px;
+      margin-bottom:4px;
+      letter-spacing:.2px;
     }
 
     .heading p{
-      font-size:clamp(.95rem,1.45vw,1.08rem);
       color:var(--c3);
+      font-size:clamp(.9rem,1.2vw,1rem);
       font-weight:600;
     }
 
+    .divider{
+      width:min(860px,96%);
+      height:1px;
+      margin:0 auto;
+      background:linear-gradient(to right, transparent, #d8be96, transparent);
+      position:relative;
+    }
+
+    .divider::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:10px;height:10px;border-radius:50%;
+      background:var(--c4);
+      box-shadow:0 0 0 4px rgba(198,138,47,.14);
+    }
+
     .experience-grid{
+      width:min(1120px,100%);
+      margin:0 auto;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
@@ -141,6 +168,12 @@
       display:grid;
       grid-template-rows:auto 1fr;
       min-height:100%;
+      transition:.22s ease;
+    }
+
+    .exp-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(80,44,22,.13);
     }
 
     .exp-photo{
@@ -208,18 +241,22 @@
     .desc b{color:#5b361b}
 
     @media (max-width:980px){
-      .experience-grid{
-        grid-template-columns:1fr;
-      }
-      .pattern{width:100%;}
-      .exp-photo{height:230px;}
+      .experience-grid{grid-template-columns:1fr}
+      .pattern{width:100%}
+      .exp-photo{height:230px}
+      .main{padding:20px 16px 22px}
     }
 
     @media (max-width:640px){
-      .main{padding:20px 16px 22px;}
-      .menu a{font-size:.92rem;padding:8px 12px;}
-      .exp-photo{height:210px;}
-      .desc{font-size:.9rem;line-height:1.6;}
+      .container{
+        margin:16px auto;
+        min-height:auto;
+      }
+
+      .menu a{font-size:.92rem;padding:8px 12px}
+      .main{padding:16px 12px 18px}
+      .exp-photo{height:210px}
+      .desc{font-size:.9rem;line-height:1.6}
     }
   </style>
 </head>
@@ -234,6 +271,7 @@
         <a href="education.html">Education</a>
         <a class="active" href="pengalaman.html">Experience</a>
         <a href="tools-skill.html">Tools & Skill</a>
+        <a href="portofolio.html">Portofolio</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
@@ -241,10 +279,12 @@
     <main class="main">
       <section class="heading">
         <h1>Experience</h1>
+        <p>Riwayat Pengalaman Magang</p>
       </section>
 
+      <div class="divider" aria-hidden="true"></div>
+
       <section class="experience-grid">
-        <!-- Polsek -->
         <article class="exp-card">
           <div class="exp-photo">
             <img id="fotoPolsek" src="Gambar/Polsek.jpg" alt="Kegiatan magang di Polsek Tanjung Kemuning" data-fallback="Polsek">
@@ -263,7 +303,6 @@
           </div>
         </article>
 
-        <!-- DPRD -->
         <article class="exp-card">
           <div class="exp-photo">
             <img id="fotoDprd" src="Gambar/Dprd.jpg" alt="Kegiatan magang di Kantor DPRD Kabupaten Badung" data-fallback="DPRD">
