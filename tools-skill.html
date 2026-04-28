@@ -35,12 +35,14 @@
       background:
         radial-gradient(circle at 0% 0%, rgba(229,176,74,.20), transparent 35%),
         linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 45%, #fffdf6 100%);
-      overflow-x:hidden; /* no horizontal scroll */
+      overflow-x:hidden;
     }
+
+    body{overflow-y:auto}
 
     .container{
       width:min(1320px,96%);
-      min-height:92vh;
+      min-height:94vh;
       margin:3vh auto;
       border-radius:26px;
       border:1px solid #ecdcc5;
@@ -105,57 +107,70 @@
     .main{
       position:relative;
       z-index:2;
-      padding:24px;
-    }
-
-    .content-card{
-      border:1px solid #ecdcc5;
-      border-radius:20px;
-      background:linear-gradient(145deg,#fffefb,#fff8ee);
-      box-shadow:0 10px 24px rgba(80,44,22,.10);
-      padding:18px;
-    }
-
-    /* ===== HERO TOP (judul + office + bunga kiri kanan) ===== */
-    .hero-area{
-      position:relative;
-      min-height:230px;
-      margin-bottom:12px;
+      padding:24px 24px 28px;
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:14px;
+      min-height:0;
     }
 
     .heading{
       text-align:center;
-      margin-bottom:12px;
-      position:relative;
-      z-index:2;
     }
 
     .heading h1{
-      font-size:clamp(1.45rem,2.2vw,2rem);
+      font-size:clamp(1.55rem,2.8vw,2.2rem);
       color:var(--c2);
       font-weight:800;
       margin-bottom:4px;
+      letter-spacing:.2px;
     }
 
     .heading h2{
-      font-size:clamp(.9rem,1.35vw,1.08rem);
+      font-size:clamp(.9rem,1.2vw,1rem);
       color:var(--c3);
       font-weight:600;
     }
 
-    .top-office{
-      display:flex;
-      justify-content:center;
+    .divider{
+      width:min(860px,96%);
+      height:1px;
+      margin:0 auto;
+      background:linear-gradient(to right, transparent, #d8be96, transparent);
       position:relative;
-      z-index:2;
+    }
+
+    .divider::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:10px;height:10px;border-radius:50%;
+      background:var(--c4);
+      box-shadow:0 0 0 4px rgba(198,138,47,.14);
+    }
+
+    .content-wrap{
+      width:min(1120px,100%);
+      margin:0 auto;
+      display:grid;
+      gap:14px;
+      align-content:start;
     }
 
     .group-card{
       border:1px solid #ecdcc5;
-      border-radius:16px;
-      background:#fffdf8;
-      box-shadow:0 6px 16px rgba(80,44,22,.08);
-      padding:11px;
+      border-radius:18px;
+      background:linear-gradient(145deg,#fffefb,#fff8ee);
+      box-shadow:0 10px 24px rgba(80,44,22,.10);
+      padding:14px;
+      transition:.22s ease;
+    }
+
+    .group-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(80,44,22,.13);
     }
 
     .group-head{
@@ -163,42 +178,41 @@
       align-items:center;
       justify-content:space-between;
       gap:8px;
-      margin-bottom:8px;
+      margin-bottom:10px;
       border-bottom:1px dashed #ead7bd;
-      padding-bottom:6px;
+      padding-bottom:7px;
       flex-wrap:wrap;
     }
 
     .group-title{
       color:var(--c2);
-      font-size:.92rem;
+      font-size:.96rem;
       font-weight:800;
     }
 
     .group-badge{
-      font-size:.70rem;
+      font-size:.72rem;
       color:#8b5b2d;
       background:#fff3de;
       border:1px solid #efd7b2;
       border-radius:999px;
-      padding:2px 8px;
+      padding:3px 9px;
       font-weight:700;
       white-space:nowrap;
     }
 
-    /* ===== GRID ICON KECIL ===== */
     .tools-grid{
       display:grid;
       grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:7px;
+      gap:10px;
       justify-items:center;
     }
 
     .tool-item{
       width:100%;
-      max-width:72px;
+      max-width:118px;
       border:1px solid #ecd9bf;
-      border-radius:10px;
+      border-radius:12px;
       background:#fffdf7;
       overflow:hidden;
       box-shadow:0 3px 8px rgba(80,44,22,.07);
@@ -213,12 +227,12 @@
     .thumb{
       width:100%;
       aspect-ratio:1/1;
-      max-height:52px;
+      max-height:84px;
       background:linear-gradient(145deg,#f4ead9,#efe0c9);
       display:grid;
       place-items:center;
       overflow:hidden;
-      padding:4px;
+      padding:6px;
     }
 
     .thumb img{
@@ -229,157 +243,65 @@
     }
 
     .tool-name{
-      padding:4px 3px 5px;
+      padding:6px 6px;
       text-align:center;
       color:#5b361b;
-      font-size:.56rem;
+      font-size:.73rem;
       font-weight:700;
       background:#fffaf0;
       border-top:1px solid #f1e2ca;
-      min-height:24px;
-      line-height:1.1;
+      min-height:34px;
+      line-height:1.2;
       display:grid;
       place-items:center;
     }
 
-    /* Office dibuat sedikit lebih besar */
-    .office-item{
-      max-width:98px;
+    .office-wrap{
+      display:flex;
+      justify-content:center;
     }
 
-    .office-item .thumb{
-      max-height:68px;
-      padding:5px;
+    .office-card{
+      width:min(300px,100%);
     }
 
-    .office-item .tool-name{
-      font-size:.63rem;
-      min-height:29px;
+    .office-card .tools-grid{
+      grid-template-columns:1fr;
     }
 
-    /* ===== BAWAH: kiri dev, kanan editing ===== */
+    .office-card .tool-item{
+      max-width:130px;
+    }
+
     .bottom-two{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:12px;
-      align-items:start;
+      gap:14px;
+      align-items:stretch;
     }
 
-    /* ===== BUNGA MINI KIRI-KANAN (seperti index, diperkecil) ===== */
-    .flower-side{
-      position:absolute;
-      top:22px;
-      width:170px;
-      height:105px;
-      pointer-events:none;
-      opacity:.62;
-      z-index:1;
-    }
-
-    .flower-left{ left:14px; }
-    .flower-right{ right:14px; transform:scaleX(-1); }
-
-    .flower-side .sparkle{
-      position:absolute;
-      width:7px;height:7px;border-radius:50%;
-      background:radial-gradient(circle, rgba(255,245,220,.95) 0%, rgba(255,245,220,.35) 45%, transparent 75%);
-      animation:twinkleMini 3s ease-in-out infinite;
-      filter:blur(.2px);
-    }
-    .flower-side .s1{ top:10px; left:40px; animation-delay:.2s; }
-    .flower-side .s2{ top:28px; left:80px; width:6px;height:6px; animation-delay:1.1s; }
-    .flower-side .s3{ top:9px; left:122px; width:6px;height:6px; animation-delay:1.9s; }
-
-    .flower-mini{
-      position:absolute;
-      width:54px;height:54px;
-      transform-origin:center;
-      filter:drop-shadow(0 3px 5px rgba(113,74,36,.10));
-      animation:swaySoftMini 6s ease-in-out infinite;
-    }
-
-    .flower-mini::before{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:56%;
-      width:2px;
-      height:24px;
-      background:linear-gradient(to bottom, #a48762, #8f7250);
-      transform:translateX(-50%);
-      opacity:.32;
-      border-radius:10px;
-    }
-
-    .flower-mini .petal{
-      position:absolute;
-      width:17px;height:22px;
-      border-radius:60% 60% 55% 55%;
-      background:linear-gradient(165deg, #edd8b1, #cfa86b 70%, #be8e4c 100%);
-      left:50%; top:50%;
-      transform-origin:50% 95%;
-      opacity:.74;
-      box-shadow:inset 0 -1px 2px rgba(139,91,45,.13);
-    }
-
-    .flower-mini .petal:nth-child(1){ transform:translate(-50%,-50%) rotate(0deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(2){ transform:translate(-50%,-50%) rotate(45deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(3){ transform:translate(-50%,-50%) rotate(90deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(4){ transform:translate(-50%,-50%) rotate(135deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(5){ transform:translate(-50%,-50%) rotate(180deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(6){ transform:translate(-50%,-50%) rotate(225deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(7){ transform:translate(-50%,-50%) rotate(270deg) translateY(-14px);}
-    .flower-mini .petal:nth-child(8){ transform:translate(-50%,-50%) rotate(315deg) translateY(-14px);}
-
-    .flower-mini .core{
-      position:absolute;
-      left:50%; top:50%;
-      width:13px;height:13px;
-      transform:translate(-50%,-50%);
-      border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, #f7e5c8 0%, #d3a465 45%, #8f6237 100%);
-      box-shadow:0 0 0 3px rgba(243,221,181,.20);
-    }
-
-    .fm1{ left:0; top:18px; }
-    .fm2{ left:56px; top:4px; width:48px;height:48px; animation-direction:reverse; }
-    .fm3{ left:106px; top:22px; width:52px;height:52px; }
-
-    @keyframes swaySoftMini{
-      0%,100%{ transform:rotate(0deg) translateY(0); }
-      25%{ transform:rotate(1.4deg) translateY(-1px); }
-      50%{ transform:rotate(0deg) translateY(1px); }
-      75%{ transform:rotate(-1.4deg) translateY(-1px); }
-    }
-
-    @keyframes twinkleMini{
-      0%,100%{ opacity:.24; transform:scale(.8); }
-      50%{ opacity:.7; transform:scale(1.1); }
-    }
-
-    /* ===== Responsive ===== */
     @media (max-width:980px){
-      .bottom-two{ grid-template-columns:1fr; }
-      .flower-side{ display:none; } /* agar tidak sempit */
-      .hero-area{ min-height:auto; }
-      .pattern{ width:100%; }
+      .bottom-two{grid-template-columns:1fr}
+      .pattern{width:100%}
+      .main{padding:20px 16px 22px}
     }
 
     @media (max-width:640px){
-      .main{ padding:16px; }
-      .menu a{ font-size:.92rem; padding:8px 12px; }
-      .tools-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }
-      .tool-item{ max-width:66px; }
-      .thumb{ max-height:50px; }
+      .container{
+        margin:16px auto;
+        min-height:auto;
+      }
+      .menu a{font-size:.92rem;padding:8px 12px}
+      .main{padding:16px 12px 18px}
+      .tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+      .tool-item{max-width:100px}
+      .thumb{max-height:72px}
+      .tool-name{font-size:.66rem;min-height:30px}
     }
 
     @media (max-width:420px){
-      .tools-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
-      .tool-item{ max-width:62px; }
-      .thumb{ max-height:46px; }
-      .tool-name{ font-size:.52rem; }
-      .office-item{ max-width:88px; }
-      .office-item .thumb{ max-height:62px; }
+      .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .tool-item{max-width:120px}
     }
   </style>
 </head>
@@ -394,85 +316,37 @@
         <a href="education.html">Education</a>
         <a href="pengalaman.html">Experience</a>
         <a class="active" href="tools-skill.html">Tools & Skill</a>
+        <a href="portofolio.html">Portofolio</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
 
     <main class="main">
-      <section class="content-card">
+      <section class="heading">
+        <h1>Tools & Skill</h1>
+        <h2>Software yang saya kuasai berdasarkan kategori</h2>
+      </section>
 
-        <section class="hero-area">
-          <!-- bunga kiri -->
-          <div class="flower-side flower-left" aria-hidden="true">
-            <span class="sparkle s1"></span>
-            <span class="sparkle s2"></span>
-            <span class="sparkle s3"></span>
+      <div class="divider" aria-hidden="true"></div>
 
-            <div class="flower-mini fm1">
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="core"></span>
+      <section class="content-wrap">
+        <section class="office-wrap">
+          <article class="group-card office-card">
+            <div class="group-head">
+              <h3 class="group-title">Microsoft Office</h3>
+              <span class="group-badge">Productivity</span>
             </div>
-            <div class="flower-mini fm2">
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="core"></span>
-            </div>
-            <div class="flower-mini fm3">
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="core"></span>
-            </div>
-          </div>
-
-          <!-- bunga kanan -->
-          <div class="flower-side flower-right" aria-hidden="true">
-            <span class="sparkle s1"></span>
-            <span class="sparkle s2"></span>
-            <span class="sparkle s3"></span>
-
-            <div class="flower-mini fm1">
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="core"></span>
-            </div>
-            <div class="flower-mini fm2">
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="core"></span>
-            </div>
-            <div class="flower-mini fm3">
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
-              <span class="core"></span>
-            </div>
-          </div>
-
-          <div class="heading">
-            <h1>Tools & Skill</h1>
-            <h2>Software yang saya kuasai berdasarkan kategori</h2>
-          </div>
-
-          <!-- Office di tengah atas -->
-          <section class="top-office">
-            <article class="group-card" style="width:min(280px,100%);">
-              <div class="group-head">
-                <h3 class="group-title">Microsoft Office</h3>
-                <span class="group-badge">Productivity</span>
-              </div>
-              <div class="tools-grid" style="grid-template-columns:1fr;">
-                <div class="tool-item office-item">
-                  <div class="thumb">
-                    <img src="Gambar/Office.webp" alt="Microsoft Office" data-fallback="Office">
-                  </div>
-                  <div class="tool-name">Microsoft Office</div>
+            <div class="tools-grid">
+              <div class="tool-item">
+                <div class="thumb">
+                  <img src="Gambar/office.webp" alt="Microsoft Office" data-fallback="Office">
                 </div>
+                <div class="tool-name">Microsoft Office</div>
               </div>
-            </article>
-          </section>
+            </div>
+          </article>
         </section>
 
-        <!-- bawah: kiri dev, kanan editing -->
         <section class="bottom-two">
           <article class="group-card">
             <div class="group-head">
