@@ -215,7 +215,7 @@
       padding:6px;
     }
 
-    /* CONTAIN: gambar website tampil utuh */
+    /* gambar website tampil utuh */
     .web-shot img{
       width:100%;
       height:auto;
@@ -247,7 +247,7 @@
       box-shadow:0 10px 14px rgba(80,44,22,.10);
     }
 
-    /* Container kotak, tapi gambar tidak dipotong (contain) */
+    /* kotak thumbnail, gambar tidak dipotong */
     .design-item .thumb{
       width:100%;
       aspect-ratio:1/1;
@@ -255,14 +255,13 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:8px;            /* ruang biar tidak mepet */
+      padding:8px;
     }
 
-    /* CONTAIN: gambar desain tampil utuh, tidak terpotong */
     .design-item img{
       width:100%;
       height:100%;
-      object-fit:contain;     /* PENTING: tidak terpotong */
+      object-fit:contain; /* PENTING: tidak terpotong */
       display:block;
       background:#fff;
       border-radius:10px;
@@ -320,18 +319,18 @@
 
           <div class="web-rows">
             <div class="web-row">
-              <div class="web-shot"><img src="Gambar/Tama1.png" alt="Tama 1" data-fallback="Tama 1"></div>
-              <div class="web-shot"><img src="Gambar/Tama2.png" alt="Tama 2" data-fallback="Tama 2"></div>
+              <div class="web-shot"><img src="./Gambar/Tama1.png" alt="Tama 1" data-fallback="Tama 1"></div>
+              <div class="web-shot"><img src="./Gambar/Tama2.png" alt="Tama 2" data-fallback="Tama 2"></div>
             </div>
 
             <div class="web-row">
-              <div class="web-shot"><img src="Gambar/Bija1.png" alt="Bija 1" data-fallback="Bija 1"></div>
-              <div class="web-shot"><img src="Gambar/Bija2.png" alt="Bija 2" data-fallback="Bija 2"></div>
+              <div class="web-shot"><img src="./Gambar/Bija1.png" alt="Bija 1" data-fallback="Bija 1"></div>
+              <div class="web-shot"><img src="./Gambar/Bija2.png" alt="Bija 2" data-fallback="Bija 2"></div>
             </div>
 
             <div class="web-row">
-              <div class="web-shot"><img src="Gambar/Ponda1.png" alt="Ponda 1" data-fallback="Ponda 1"></div>
-              <div class="web-shot"><img src="Gambar/Ponda2.png" alt="Ponda 2" data-fallback="Ponda 2"></div>
+              <div class="web-shot"><img src="./Gambar/Ponda1.png" alt="Ponda 1" data-fallback="Ponda 1"></div>
+              <div class="web-shot"><img src="./Gambar/Ponda2.png" alt="Ponda 2" data-fallback="Ponda 2"></div>
             </div>
           </div>
         </article>
@@ -345,31 +344,31 @@
           <div class="design-grid">
             <div class="design-item">
               <div class="thumb">
-                <img src="Gambar/Desain1.png" alt="Desain 1" data-fallback="Desain 1">
+                <img src="./Gambar/Desain1.png" alt="Desain 1" data-fallback="Desain 1">
               </div>
             </div>
 
             <div class="design-item">
               <div class="thumb">
-                <img src="Gambar/Desain2.png" alt="Desain 2" data-fallback="Desain 2">
+                <img src="./Gambar/Desain2.png" alt="Desain 2" data-fallback="Desain 2">
               </div>
             </div>
 
             <div class="design-item">
               <div class="thumb">
-                <img src="Gambar/Desain3.png" alt="Desain 3" data-fallback="Desain 3">
+                <img src="./Gambar/Desain3.png" alt="Desain 3" data-fallback="Desain 3">
               </div>
             </div>
 
             <div class="design-item">
               <div class="thumb">
-                <img src="Gambar/Desain4.jpg" alt="Desain 4" data-fallback="Desain 4">
+                <img src="./Gambar/Desain4.jpg" alt="Desain 4" data-fallback="Desain 4">
               </div>
             </div>
 
             <div class="design-item">
               <div class="thumb">
-                <img src="Gambar/Desain5.png" alt="Desain 5" data-fallback="Desain 5">
+                <img src="./Gambar/Desain5.png" alt="Desain 5" data-fallback="Desain 5">
               </div>
             </div>
           </div>
@@ -379,13 +378,65 @@
   </div>
 
   <script>
-    (function imageFallback(){
+    // Fallback pintar:
+    // - Jika gambar gagal load, coba variasi path/exstensi (umum di GitHub karena beda huruf besar-kecil / ekstensi).
+    // - Setelah semua dicoba, baru pakai placeholder.
+    (function imageFallbackSmart(){
       const images = document.querySelectorAll("img[data-fallback]");
+
+      function candidates(originalSrc){
+        // pastikan relative "./"
+        const src = originalSrc.startsWith("./") ? originalSrc : ("./" + originalSrc.replace(/^\.\//,''));
+        const noDot = src.replace(/^\.\//,'');
+
+        // ambil folder + filename tanpa ekstensi
+        const m = noDot.match(/^(.*\/)?([^\/]+)\.(png|jpg|jpeg|webp)$/i);
+        if(!m){
+          // kalau tidak match ekstensi, coba versi ./ + as-is
+          return [src, "./" + noDot];
+        }
+
+        const dir = m[1] || "";
+        const base = m[2];
+
+        // variasi ekstensi umum (karena kadang salah tulis)
+        return [
+          `./${dir}${base}.png`,
+          `./${dir}${base}.jpg`,
+          `./${dir}${base}.jpeg`,
+          `./${dir}${base}.webp`,
+          // variasi folder huruf kecil (kalau user terlanjur pakai 'gambar')
+          `./${dir.replace(/^Gambar\//,'gambar/')}${base}.png`,
+          `./${dir.replace(/^Gambar\//,'gambar/')}${base}.jpg`,
+          `./${dir.replace(/^Gambar\//,'gambar/')}${base}.jpeg`,
+          `./${dir.replace(/^Gambar\//,'gambar/')}${base}.webp`,
+        ];
+      }
+
       images.forEach((img)=>{
-        img.onerror = function(){
+        const tried = new Set();
+        const list = candidates(img.getAttribute("src"));
+
+        img.addEventListener("error", function(){
+          // cari kandidat berikutnya yang belum dicoba
+          let next = null;
+          for(const c of list){
+            if(!tried.has(c)){
+              next = c;
+              break;
+            }
+          }
+
+          if(next){
+            tried.add(next);
+            this.src = next;
+            return;
+          }
+
+          // terakhir: placeholder
           const label = this.dataset.fallback || "Image";
           this.src = "https://via.placeholder.com/1200x800?text=" + encodeURIComponent(label);
-        };
+        }, { once:false });
       });
     })();
   </script>
