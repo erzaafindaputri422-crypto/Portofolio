@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Erza Afinda Putri</title>
+  <meta name="description" content="Halaman portofolio Erza Afinda Putri" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --c1:#2f1b0f;
+      --c2:#5b361b;
+      --c3:#8b5b2d;
+      --c4:#c68a2f;
+      --c5:#e5b04a;
+      --text:#3f2514;
+      --muted:#7c5a43;
+      --line:#ead9c0;
+      --bg1:#fffefb;
+      --bg2:#fff8ed;
+      --card:#fffdf8;
+      --shadow:0 16px 40px rgba(80,44,22,.14);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html,body{
+      width:100%;
+      min-height:100%;
+      font-family:"Poppins",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(229,176,74,.20), transparent 35%),
+        linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 45%, #fffdf6 100%);
+      overflow-x:hidden;
+    }
+
+    body{overflow-y:auto}
+
+    .container{
+      width:min(1320px,96%);
+      min-height:94vh;
+      margin:3vh auto;
+      border-radius:26px;
+      border:1px solid #ecdcc5;
+      background:linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,250,241,.9));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-rows:auto 1fr;
+      position:relative;
+    }
+
+    .navbar{
+      min-height:78px;
+      border-bottom:1px solid #ecdcc5;
+      background:linear-gradient(90deg, rgba(255,248,233,.96), rgba(255,255,255,.94));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 18px;
+      z-index:5;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:var(--c2);
+      font-weight:800;
+      padding:10px 16px;
+      border-radius:14px;
+      transition:.22s ease;
+      font-size:1rem;
+      background:transparent;
+    }
+
+    .menu a:hover{background:#fff;color:var(--c3)}
+
+    .menu a.active{
+      background:linear-gradient(145deg,#fffefb,#fff7ea);
+      color:var(--c4);
+      box-shadow:inset 0 -2px 0 rgba(198,138,47,.8);
+    }
+
+    .pattern{
+      position:absolute;
+      right:0; top:0; bottom:0;
+      width:52%;
+      opacity:.14;
+      pointer-events:none;
+      background:
+        linear-gradient(135deg, rgba(91,54,27,.22) 12%, transparent 12.5%, transparent 87%, rgba(91,54,27,.22) 87.5%, rgba(91,54,27,.22)),
+        linear-gradient(45deg, rgba(91,54,27,.22) 12%, transparent 12.5%, transparent 87%, rgba(91,54,27,.22) 87.5%, rgba(91,54,27,.22));
+      background-size:140px 200px;
+    }
+
+    .main{
+      position:relative;
+      z-index:2;
+      padding:24px 24px 28px;
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:14px;
+      min-height:0;
+    }
+
+    .heading{text-align:center}
+
+    .heading h1{
+      font-size:clamp(1.55rem,2.8vw,2.2rem);
+      color:var(--c2);
+      font-weight:800;
+      margin-bottom:4px;
+      letter-spacing:.2px;
+    }
+
+    .heading h2{
+      font-size:clamp(.9rem,1.2vw,1rem);
+      color:var(--c3);
+      font-weight:600;
+    }
+
+    .divider{
+      width:min(860px,96%);
+      height:1px;
+      margin:0 auto;
+      background:linear-gradient(to right, transparent, #d8be96, transparent);
+      position:relative;
+    }
+
+    .divider::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:10px;height:10px;border-radius:50%;
+      background:var(--c4);
+      box-shadow:0 0 0 4px rgba(198,138,47,.14);
+    }
+
+    .content-wrap{
+      width:min(1120px,100%);
+      margin:0 auto;
+      display:grid;
+      gap:14px;
+      align-content:start;
+      padding-bottom:6px;
+    }
+
+    .group-card{
+      border:1px solid #ecdcc5;
+      border-radius:18px;
+      background:linear-gradient(145deg,#fffefb,#fff8ee);
+      box-shadow:0 10px 24px rgba(80,44,22,.10);
+      padding:14px;
+      transition:.22s ease;
+    }
+
+    .group-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(80,44,22,.13);
+    }
+
+    .group-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:10px;
+      border-bottom:1px dashed #ead7bd;
+      padding-bottom:7px;
+      flex-wrap:wrap;
+    }
+
+    .group-title{color:var(--c2);font-size:.98rem;font-weight:800}
+
+    .group-badge{
+      font-size:.72rem;
+      color:#8b5b2d;
+      background:#fff3de;
+      border:1px solid #efd7b2;
+      border-radius:999px;
+      padding:3px 9px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    /* ===== Website rows ===== */
+    .web-rows{display:grid;gap:14px}
+
+    .web-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .web-shot{
+      width:100%;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid #efdcc0;
+      background:linear-gradient(145deg,#f4ead9,#efe0c9);
+      box-shadow:0 8px 18px rgba(80,44,22,.08);
+      padding:6px;
+    }
+
+    /* CONTAIN: gambar website tampil utuh */
+    .web-shot img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      background:#fff;
+      border-radius:12px;
+      max-height:520px;
+    }
+
+    /* ===== Design ===== */
+    .design-grid{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .design-item{
+      border:1px solid #ecd9bf;
+      border-radius:14px;
+      overflow:hidden;
+      background:#fffdf7;
+      box-shadow:0 3px 8px rgba(80,44,22,.07);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+
+    .design-item:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 14px rgba(80,44,22,.10);
+    }
+
+    /* Container kotak, tapi gambar tidak dipotong (contain) */
+    .design-item .thumb{
+      width:100%;
+      aspect-ratio:1/1;
+      background:linear-gradient(145deg,#f4ead9,#efe0c9);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px;            /* ruang biar tidak mepet */
+    }
+
+    /* CONTAIN: gambar desain tampil utuh, tidak terpotong */
+    .design-item img{
+      width:100%;
+      height:100%;
+      object-fit:contain;     /* PENTING: tidak terpotong */
+      display:block;
+      background:#fff;
+      border-radius:10px;
+    }
+
+    @media (max-width:980px){
+      .pattern{width:100%}
+      .main{padding:20px 16px 22px}
+      .web-row{grid-template-columns:1fr}
+      .design-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .web-shot img{max-height:560px;}
+    }
+
+    @media (max-width:640px){
+      .container{margin:16px auto;min-height:auto}
+      .menu a{font-size:.92rem;padding:8px 12px}
+      .main{padding:16px 12px 18px}
+      .design-grid{grid-template-columns:1fr}
+      .web-shot{padding:5px}
+      .web-shot img{max-height:none;}
+      .design-item .thumb{padding:10px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pattern" aria-hidden="true"></div>
+
+    <header class="navbar">
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="education.html">Education</a>
+        <a href="pengalaman.html">Experience</a>
+        <a href="tools-skill.html">Tools & Skill</a>
+        <a class="active" href="portofolio.html">Portofolio</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="heading">
+        <h1>Portofolio</h1>
+        <h2>Beberapa project website & desain yang pernah saya buat</h2>
+      </section>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <section class="content-wrap">
+        <article class="group-card">
+          <div class="group-head">
+            <h3 class="group-title">Project Website</h3>
+            <span class="group-badge">Web</span>
+          </div>
+
+          <div class="web-rows">
+            <div class="web-row">
+              <div class="web-shot"><img src="Gambar/Tama1.png" alt="Tama 1" data-fallback="Tama 1"></div>
+              <div class="web-shot"><img src="Gambar/Tama2.png" alt="Tama 2" data-fallback="Tama 2"></div>
+            </div>
+
+            <div class="web-row">
+              <div class="web-shot"><img src="Gambar/Bija1.png" alt="Bija 1" data-fallback="Bija 1"></div>
+              <div class="web-shot"><img src="Gambar/Bija2.png" alt="Bija 2" data-fallback="Bija 2"></div>
+            </div>
+
+            <div class="web-row">
+              <div class="web-shot"><img src="Gambar/Ponda1.png" alt="Ponda 1" data-fallback="Ponda 1"></div>
+              <div class="web-shot"><img src="Gambar/Ponda2.png" alt="Ponda 2" data-fallback="Ponda 2"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group-card">
+          <div class="group-head">
+            <h3 class="group-title">Project Desain</h3>
+            <span class="group-badge">Design</span>
+          </div>
+
+          <div class="design-grid">
+            <div class="design-item">
+              <div class="thumb">
+                <img src="Gambar/Desain1.png" alt="Desain 1" data-fallback="Desain 1">
+              </div>
+            </div>
+
+            <div class="design-item">
+              <div class="thumb">
+                <img src="Gambar/Desain2.png" alt="Desain 2" data-fallback="Desain 2">
+              </div>
+            </div>
+
+            <div class="design-item">
+              <div class="thumb">
+                <img src="Gambar/Desain3.png" alt="Desain 3" data-fallback="Desain 3">
+              </div>
+            </div>
+
+            <div class="design-item">
+              <div class="thumb">
+                <img src="Gambar/Desain4.jpg" alt="Desain 4" data-fallback="Desain 4">
+              </div>
+            </div>
+
+            <div class="design-item">
+              <div class="thumb">
+                <img src="Gambar/Desain5.png" alt="Desain 5" data-fallback="Desain 5">
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function imageFallback(){
+      const images = document.querySelectorAll("img[data-fallback]");
+      images.forEach((img)=>{
+        img.onerror = function(){
+          const label = this.dataset.fallback || "Image";
+          this.src = "https://via.placeholder.com/1200x800?text=" + encodeURIComponent(label);
+        };
+      });
+    })();
+  </script>
+</body>
+</html>
